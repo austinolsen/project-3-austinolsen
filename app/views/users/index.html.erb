@@ -1,7 +1,13 @@
-<nav><small>Already have a list?</small><button><strong>Login</strong></button></nav>
-<div>
+<% if current_user %>
+<nav><%= current_user.name %>(<%= current_user.id %>)<a href="/logout" class="btn btn-info"><strong>Logout</strong></a></nav>
+<% else %>
+<nav>Already have a list?<a href="/login" class="btn btn-info"><strong>Login</strong></a></nav>
+<% end %>
+<div class="row">
   <h1>My Wish List</h1>
-  <button>Create List</button>
+  <a href="/signup" class="btn btn-danger">Create List</a>
   </br>
-  <button>Find List</button>
 </div>
+
+
+Total users:<%= @users.length %>

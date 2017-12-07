@@ -1,0 +1,13 @@
+<% if current_user %>
+  <nav><%= current_user.name %>(<%= current_user.id %>)<a href="/logout" class="btn btn-info"><strong>Logout</strong></a></nav>
+<% else %>
+  <nav>Already have a list?<a href="/login" class="btn btn-info"><strong>Login</strong></a></nav>
+<% end %>
+<h1>Profile page</h1>
+
+<div>
+  <%= form_tag('/search', method: "get", id: "item-search") do %>
+  <%= text_field_tag :search, params[:search_term], placeholder: "Search Items" %>
+  <%= submit_tag("Search") %>
+  <% end %>
+</div>
