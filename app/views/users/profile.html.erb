@@ -11,3 +11,21 @@
   <%= submit_tag("Search") %>
   <% end %>
 </div>
+
+
+<div class="row"
+  <% if @items_list.nil?  %>
+    Empty
+    <% else %>
+    <p><% @items_list.each do |i| %>
+      <div class="col-md-3 items">
+      <ul>
+        <li><img src="<%= i["LargeImage"].first[1]%>" height=150></img></li>
+        <li><strong><%= i["ItemAttributes"]["Title"] %><strong></li>
+        <li><a href="<%= i["DetailPageURL"] %>">Amazon Product Page</a></li>
+        <li><button class="btn btn-info">Save</button></li>
+      </ul>
+    </div>
+    <% end %></p>
+  <% end %>
+</div>
