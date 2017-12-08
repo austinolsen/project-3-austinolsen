@@ -5,15 +5,15 @@
 <% end %>
 <h1>Profile page</h1>
 
-<div>
-  <%= form_tag('/search', method: "get", id: "item-search") do %>
-  <%= text_field_tag :search, params[:search_term], placeholder: "Search Items" %>
-  <%= submit_tag("Search") %>
+<div class="row">
+    <%= form_tag('/search', method: "get", id: "item-search") do %>
+    <%= text_field_tag :search, params[:search_term], placeholder: "Search Items", required: true %>
+    <%= submit_tag("Search") %>
   <% end %>
 </div>
 
 
-<div class="row"
+<div class="row">
   <% if @items_list.nil?  %>
     Empty
     <% else %>
@@ -21,7 +21,7 @@
       <div class="col-md-3 items">
       <ul>
         <li><img src="<%= i["LargeImage"].first[1]%>" height=150></img></li>
-        <li><strong><%= i["ItemAttributes"]["Title"] %><strong></li>
+        <li><strong><%= i["ItemAttributes"]["Title"].first(136) %><strong></li>
         <li><a href="<%= i["DetailPageURL"] %>">Amazon Product Page</a></li>
         <li><button class="btn btn-info">Save</button></li>
       </ul>
