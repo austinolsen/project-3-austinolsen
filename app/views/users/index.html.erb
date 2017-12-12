@@ -1,5 +1,7 @@
 <% if current_user %>
-<nav><%= current_user.name %>(<%= current_user.id %>)<a href="/logout" class="btn btn-info"><strong>Logout</strong></a></nav>
+<nav><%= current_user.name %>
+  <a href="/users/<%= current_user.id %>" class="btn btn-info"><strong>My List</strong></a>
+  <a href="/logout" class="btn btn-info"><strong>Logout</strong></a></nav>
 <% else %>
 <nav>Already have a list?<a href="/login" class="btn btn-info"><strong>Login</strong></a></nav>
 <% end %>
@@ -8,6 +10,12 @@
   <a href="/signup" class="btn btn-danger">Create List</a>
   </br>
 </div>
+<hr>
+<form method="GET" action="/find">
+<input type="text" name="username" placeholder="Search Username"></>
+<button class="btn btn-success">Find List</button>
+</form>
+<br>
 
 
-Total users:<%= @users.length %>
+Total Users: <%= @users.length %>

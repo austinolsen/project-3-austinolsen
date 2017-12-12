@@ -1,31 +1,86 @@
 <% if current_user %>
-  <nav><%= current_user.name %>(<%= current_user.id %>)<a href="/logout" class="btn btn-info"><strong>Logout</strong></a></nav>
+  <nav><%= current_user.name %>
+    <a href="/" class="btn btn-info"><strong>Home</strong></a>
+    <a href="/logout" class="btn btn-info"><strong>Logout</strong></a></nav>
 <% else %>
-  <nav>Already have a list?<a href="/login" class="btn btn-info"><strong>Login</strong></a></nav>
+  <nav><a href="/" class="btn btn-info"><strong>Home</strong></a>
+  <a href="/login" class="btn btn-info"><strong>Login</strong></a></nav>
 <% end %>
-<h1>Profile page</h1>
 
-<div class="row">
-    <%= form_tag('/search', method: "get", id: "item-search") do %>
-    <%= text_field_tag :search, params[:search_term], placeholder: "Search Items", required: true %>
-    <%= submit_tag("Search") %>
-  <% end %>
-</div>
+<% if @user.nil? %>
+<h1><%= current_user.name %>'s List</h1>
+<% else %>
+<h1><%= @user.name %>'s List</h1>
+<% end %>
 
+  <% if @saved_items.nil? %>
 
-<div class="row">
-  <% if @items_list.nil?  %>
-    Empty
-    <% else %>
-    <p><% @items_list.each do |i| %>
-      <div class="col-md-3 items">
-      <ul>
-        <li><img src="<%= i["LargeImage"].first[1]%>" height=150></img></li>
-        <li><strong><%= i["ItemAttributes"]["Title"].first(136) %><strong></li>
-        <li><a href="<%= i["DetailPageURL"] %>">Amazon Product Page</a></li>
-        <li><button class="btn btn-info">Save</button></li>
-      </ul>
+  <% else %>
+    <hr>
+    <h3>Saved Items</h3>
+    <div class="row">
+      <p><% @saved_items.each do |item| %>
+        <div class="col-md-3 items">
+        <ul>
+          <li><img src="<%= item.img %>" height=150></img></li>
+          <li><strong><%= item.title %> </strong></li>
+          <li><a href="<%= item.url %>"><strong>Amazon Product Page</strong></a></li>
+          <li><strong><%= item.price %></strong></li>
+          <% if session[:user_id].nil? %>
+          <% else %>
+          <% if session[:user_id] == current_user.id %>
+          <%= form_tag('/item/' + item["id"].to_s, method: "delete", id: "delete_item") do %>
+          <input type="hidden" name="item_id" value="<%= item["id"] %>"/>
+          <li><button class="btn btn-danger">Remove Item</button></li>
+          <% end %>
+          <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
     </div>
-    <% end %></p>
   <% end %>
-</div>
+
+  <% if session[:user_id].nil? %>
+  <% else %>
+  <% if session[:user_id] == current_user.id %>
+  <hr>
+  <h3>Add Items</h3>
+  <div class="row">
+      <%= form_tag('/search', method: "get", id: "item-search") do %>
+      <%= text_field_tag :search, params[:search_term], placeholder: "Search Items", required: true %>
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+
+
+  <div class="row">
+    <% if @items_list.nil?  %>
+      <% else %>
+      <% @items_list.each do |i| %>
+        <div class="col-md-3 items">
+        <ul>
+          <li><img src="<%= i["LargeImage"].first[1]%>" height=150></img></li>
+          <li><strong><%= i["ItemAttributes"]["Title"].first(108) %><strong></li>
+          <li><a href="<%= i["DetailPageURL"] %>">Amazon Product Page</a></li>
+          <% if i["ItemAttributes"]["ListPrice"].nil? %>
+          <% else %>
+          <li><strong><%= i["ItemAttributes"]["ListPrice"]["FormattedPrice"] %><strong></li>
+            <% end %>
+            <%= form_tag('/save', method: "post", id: "save_item") do %>
+            <input type="hidden" name="item_title" value="<%= i["ItemAttributes"]["Title"].first(108) %>"/>
+            <input type="hidden" name="item_img" value="<%= i["LargeImage"].first[1]%>"/>
+            <input type="hidden" name="item_url" value="<%= i["DetailPageURL"] %>"/>
+            <% if i["ItemAttributes"]["ListPrice"].nil? %>
+            <% else %>
+            <input type="hidden" name="item_price" value="<%= i["ItemAttributes"]["ListPrice"]["FormattedPrice"] %>"/>
+            <% end %>
+          <li><button class="btn btn-info"> Add Item </button></li>
+        </ul>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+<% end %>
