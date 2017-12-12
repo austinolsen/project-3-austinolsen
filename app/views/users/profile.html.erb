@@ -25,7 +25,7 @@
           <li><img src="<%= item.img %>" height=150></img></li>
           <li><strong><%= item.title %> </strong></li>
           <li><a href="<%= item.url %>"><strong>Amazon Product Page</strong></a></li>
-          <li><strong><%= item.price %></strong></li>
+          <li><strong>SRP: <%= item.price %></strong></li>
           <% if session[:user_id].nil? %>
           <% else %>
           <% if session[:user_id] == current_user.id %>
@@ -65,7 +65,7 @@
           <li><a href="<%= i["DetailPageURL"] %>">Amazon Product Page</a></li>
           <% if i["ItemAttributes"]["ListPrice"].nil? %>
           <% else %>
-          <li><strong><%= i["ItemAttributes"]["ListPrice"]["FormattedPrice"] %><strong></li>
+          <li><strong>SRP: <%= i["ItemAttributes"]["ListPrice"]["FormattedPrice"] %><strong></li>
             <% end %>
             <%= form_tag('/save', method: "post", id: "save_item") do %>
             <input type="hidden" name="item_title" value="<%= i["ItemAttributes"]["Title"].first(108) %>"/>

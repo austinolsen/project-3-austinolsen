@@ -13,7 +13,7 @@ def search_items
   # Your Access Key ID, as taken from the Your Account page
 
   # Your Secret Key corresponding to the above ID, as taken from the Your Account page
-  secret_key = "7hljoEomUg00rnFeYxLWDq0ZRo6X/H1gi5Bbgxvq"
+  secret_key = SECRET_KEY
 
   # The region you are interested in
   endpoint = "webservices.amazon.com"
@@ -23,8 +23,8 @@ def search_items
   params = {
     "Service" => "AWSECommerceService",
     "Operation" => "ItemSearch",
-    "AWSAccessKeyId" => "AKIAIY36EEPI2DZ7GXDQ",
-    "AssociateTag" => "project30b-20",
+    "AWSAccessKeyId" => AWSACCESSKEYID,
+    "AssociateTag" => ASSOCIATETAG,
     "SearchIndex" => "All",
     "Keywords" => "#{search_item}",
     "ResponseGroup" => "ItemAttributes,Images"
