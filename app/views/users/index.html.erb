@@ -1,20 +1,28 @@
 <% if current_user %>
-<nav><%= current_user.name %>
+<nav><strong class="nav_text"><%= current_user.name %></strong>
   <a href="/users/<%= current_user.id %>" class="btn btn-info"><strong>My List</strong></a>
   <a href="/logout" class="btn btn-info"><strong>Logout</strong></a></nav>
 <% else %>
-<nav>Already have a list?<a href="/login" class="btn btn-info"><strong>Login</strong></a></nav>
+<nav><strong class="nav_text">Already have a list?</strong><a href="/login" class="btn btn-info"><strong>Login</strong></a></nav>
 <% end %>
 <div class="row">
-  <h1>My Wish List</h1>
-  <a href="/signup" class="btn btn-danger">Create List</a>
+  <h1 class="title">My Listly</h1>
+  <a href="/signup" class="btn btn-danger" id="start">Get Started!</a>
   </br>
 </div>
-<hr>
-<form method="GET" action="/find">
-<input type="text" name="username" placeholder="Search Username"></>
-<button class="btn btn-success">Find List</button>
-</form>
+
+<div class="row">
+  <div class="col-sm-5">
+  </div>
+  <div class="col-sm-2">
+    <form method="GET" action="/find">
+      <input type="text" name="username" placeholder="Search Username" class="form-control"></input>
+    </div>
+    <div class="col-sm-1">
+      <button class="btn btn-success">Find List</button>
+    </div>
+    </form>
+</div>
 <br>
 
 

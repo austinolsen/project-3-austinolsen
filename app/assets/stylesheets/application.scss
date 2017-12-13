@@ -17,4 +17,35 @@
 
  body {
    text-align: center;
+   background-image: url("https://wallpapercave.com/wp/Se12jVO.jpg");
+   background-size: cover;
+   background-position: center center;
+   background-repeat: no-repeat;
+   height: 100vh;
+   width: 100%;
  }
+
+.title {
+  margin-top: 70px;
+  color: white;
+  font-size: 60px;
+}
+
+#start {
+  margin-top: 80px;
+  margin-bottom: 180px;
+}
+
+.nav_text {
+  font-size: 18px;
+  color: white;
+}
+
+input {
+  margin-bottom: 4px;
+}
+
+h1 {
+  color: white;
+  font-size: 60px;
+}

@@ -1,5 +1,5 @@
 <style>
-.lists {
+body {
   background: white;
 }
 </style>
@@ -13,44 +13,11 @@
   <a href="/login" class="btn btn-info"><strong>Login</strong></a></nav>
 <% end %>
 
-<% if @user.nil? %>
-<h1><%= current_user.name %>'s List</h1>
-<% else %>
-<h1><%= @user.name %>'s List</h1>
-<% end %>
 
-  <% if @saved_items.nil? %>
-
-  <% else %>
-  <div class="row lists">
-    <hr>
-    <h3>Saved Items</h3>
-      <p><% @saved_items.each do |item| %>
-        <div class="col-md-3 items">
-        <ul>
-          <li><img src="<%= item.img %>" height=150></img></li>
-          <li><strong><%= item.title %> </strong></li>
-          <li><a href="<%= item.url %>"><strong>Amazon Product Page</strong></a></li>
-          <li><strong>SRP: <%= item.price %></strong></li>
-          <% if session[:user_id].nil? %>
-          <% else %>
-          <% if session[:user_id] == current_user.id %>
-          <%= form_tag('/item/' + item["id"].to_s, method: "delete", id: "delete_item") do %>
-          <input type="hidden" name="item_id" value="<%= item["id"] %>"/>
-          <li><button class="btn btn-danger">Remove Item</button></li>
-          <% end %>
-          <% end %>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
-    </div>
-  <% end %>
 
   <% if session[:user_id].nil? %>
   <% else %>
   <% if session[:user_id] == current_user.id %>
-  <hr>
   <h3>Add Items</h3>
   <div class="row lists">
       <%= form_tag('/search', method: "get", id: "item-search") do %>

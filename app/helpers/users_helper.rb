@@ -13,7 +13,7 @@ def search_items
   # Your Access Key ID, as taken from the Your Account page
 
   # Your Secret Key corresponding to the above ID, as taken from the Your Account page
-  secret_key = ENV["SECRET_KEY"]
+  secret_key = "7hljoEomUg00rnFeYxLWDq0ZRo6X/H1gi5Bbgxvq"
 
   # The region you are interested in
   endpoint = "webservices.amazon.com"
@@ -23,8 +23,8 @@ def search_items
   params = {
     "Service" => "AWSECommerceService",
     "Operation" => "ItemSearch",
-    "AWSAccessKeyId" => ENV["AWSACCESSKEYID"],
-    "AssociateTag" => ENV["ASSOCIATETAG"],
+    "AWSAccessKeyId" => "AKIAIY36EEPI2DZ7GXDQ",
+    "AssociateTag" => "project30b-20",
     "SearchIndex" => "All",
     "Keywords" => "#{search_item}",
     "ResponseGroup" => "ItemAttributes,Images"
@@ -54,7 +54,7 @@ def search_items
   @hash_response = Crack::XML.parse(response.to_s)
 
   @items_list = @hash_response["ItemSearchResponse"]["Items"]["Item"][0...9]
-  render('profile')
+  render('results')
   end
 
   def save_item
