@@ -6,7 +6,7 @@ https://my-listy.herokuapp.com
 
 ### My Listy
 
-  **My Listy** - is about creating a easy way to make a single list that can be shared with many people. It is intentionally simple to use for yourself and more notably those you want share it with, but don't let that simple design fool you. It is backed with the power of Amazon in a more absorbable format. With My Listy you can create a list, search through the Amazon Store, save the ones you want, and even use the links to buy them.
+  **My Listy** - is about creating an easy way to make a single list that can be shared with many people. It is intentionally simple to use for yourself and more notably those you want share it with, but don't let that simple design fool you. It is backed with the power of Amazon in a more absorbable format. With My Listy you can create a list, search through the Amazon Store, save the ones you want, and even use the links to buy them.
 
 #### Technologies Used
 
