@@ -13,12 +13,14 @@ https://my-listy.herokuapp.com
   * Ruby on Rails
   * ActiveRecord
   * Bootstrap    
-  * Amazon Advertising API through AWS
+  * Amazon Advertising API
   * Httparty    
   * Crack
 
 #### Future Features
 
 * Sharing options - either by text or email
-* Groups - gift giving made easier with one stop shop and reserve gift options
+
+* Create Groups - gift giving made easier with one stop shop and reserve gift options
+
 * Secret Santa - Create a special group type that assigns gifters to gifties
