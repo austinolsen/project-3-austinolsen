@@ -1,24 +1,24 @@
-# README
+# <img src="https://cloud.githubusercontent.com/assets/7833470/10899314/63829980-8188-11e5-8cdd-4ded5bcb6e36.png" height="60"> Project 3 - Final Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://my-listy.herokuapp.com
 
-Things you may want to cover:
+## Overview
 
-* Ruby version
+### My Listy
 
-* System dependencies
+  **My Listy** is about creating a easy way to make a single list that can be shared with many people. It is intentionally simple to use for yourself and more notably those you want share it with, but don't let that simple design fool you. It is backed with the power of Amazon in a more absorbable format. With My Listy you can create a list, search through the Amazon Store, save the ones you want, and even use the links to buy them.
 
-* Configuration
+#### Technologies Used
 
-* Database creation
+  * Ruby on Rails
+  * ActiveRecord
+  * Bootstrap    
+  * Amazon Advertising API through AWS
+  * Httparty    
+  * Crack
 
-* Database initialization
+#### Future Features
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Sharing options - either by text or email
+* Groups - gift giving made easier with one stop shop and reserve gift options
+* Secret Santa - Create a special group type that assigns gifters to gifties
