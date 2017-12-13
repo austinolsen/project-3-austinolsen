@@ -24,3 +24,11 @@ https://my-listy.herokuapp.com
 * Create Groups - gift giving made easier with one stop shop and reserve gift options
 
 * Secret Santa - Create a special group type that assigns gifters to gifties
+
+#### Known Issues
+
+* Username search - occationally does not work after log out or shows current users list if logged in
+
+* Error Handeling - needed for login, signup, and user search
+
+* Amazon Search - some results break the page
